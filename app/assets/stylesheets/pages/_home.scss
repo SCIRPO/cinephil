@@ -1,1 +1,44 @@
 // Specific CSS for your home-page
+.banner-hero {
+  height: 500px;
+  background-image: url("https://res.cloudinary.com/dmwz69h6j/image/upload/v1612294050/jens-kreuter-ngMtsE5r9eI-unsplash_z4j7he.jpg");
+  background-size: cover;
+  filter: grayscale(60%);
+  margin-bottom: 40px;
+}
+
+.banner-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin: auto;
+  text-align: center;
+
+}
+.platform-goals {
+  margin: 30px auto;
+
+}
+
+h1,h2,h5 {
+  color: $title-text-color;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+h5 {
+  font-weight: lighter;
+  background-color: $highlight;
+  padding: 2px;
+}
+
+p {
+  color: $text-color;
+}
