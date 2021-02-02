@@ -1,0 +1,17 @@
+<div class="container justify-content-center">
+  <h1 class="">All series</h1>
+
+  <div class="d-flex align-items flex-wrap">
+
+  <% @series.each do |serie|%>
+    <div class="card d-flex align-items m-3" style="width: 18rem">
+      <div class="card-body d-flex align-items">
+        <h2 class="card-title "> <%= serie.title%> </h2>
+        <p class="card-title "> <%= serie.synopsis%> </p>
+        <p class="card-title "> <%= serie.genre%> </p>
+        <p class="card-title "> <%= serie.platform%> </p>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>
