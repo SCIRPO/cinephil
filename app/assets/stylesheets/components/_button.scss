@@ -1,0 +1,18 @@
+.btn-main {
+  background-color: $background;
+  border: 1px solid $text-color;
+  padding: 2px 24px;
+  border-radius: 15px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.btn-secondary {
+  background-color: $background;
+  border: 1px solid $text-color;
+  padding: 1px 24px;
+  border-radius: 15px;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
