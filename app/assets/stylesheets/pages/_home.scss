@@ -1,36 +1,18 @@
-// Specific CSS for your home-page
-.banner-hero {
-  height: 500px;
-  background-image: url("https://res.cloudinary.com/dmwz69h6j/image/upload/v1612294050/jens-kreuter-ngMtsE5r9eI-unsplash_z4j7he.jpg");
-  background-size: cover;
-  filter: grayscale(60%);
-  margin-bottom: 40px;
-}
-
-.banner-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  margin: auto;
-  text-align: center;
-
-}
-.platform-goals {
-  margin: 30px auto;
-
-}
-
 h1,h2,h5 {
   color: $title-text-color;
 }
 
 h1 {
   font-weight: 900;
+  margin: auto;
+  padding: 15px;
 }
+
 
 h2 {
   font-weight: bold;
+  margin-bottom: 25px;
+  text-transform: uppercase;
 }
 
 h5 {
@@ -41,4 +23,55 @@ h5 {
 
 p {
   color: $text-color;
+}
+// Specific CSS for your home-page
+.banner-hero {
+  height: 500px;
+  background-image: url("https://res.cloudinary.com/dmwz69h6j/image/upload/v1612294050/jens-kreuter-ngMtsE5r9eI-unsplash_z4j7he.jpg");
+  background-size: cover;
+  filter: grayscale(40%);
+  margin-bottom: 25px;
+}
+
+.banner-content {
+  display: block;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding: 80px 0;
+
+}
+
+input {
+  background-color: $background;
+  width: 55%;
+  padding: 8px;
+  margin-top: 80px;
+  border: 0.5px solid $highlight-bis;
+  border-radius: 10px;
+}
+
+.platform-goals {
+  margin: 30px auto;
+
+}
+
+.statistics h2 {
+  text-align: center;
+}
+
+
+.statistics {
+  margin-top: 20px;
+}
+
+.statistics-number {
+  text-align: center;
+  color: $highlight-bis;
+  font-size: 34px;
+}
+
+.statistics-label {
+  text-align: center;
+  font-size: 20px;
 }
