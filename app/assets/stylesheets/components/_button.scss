@@ -1,10 +1,11 @@
 .btn-main {
-  background-color: $background;
-  border: 1px solid $text-color;
+  background-color: $highlight;
+  border: 1px solid $highlight;
   padding: 2px 24px;
   border-radius: 15px;
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity 0.3s ease;
+  color: $text-color !important;
 }
 
 .btn-secondary {
@@ -14,5 +15,9 @@
   border-radius: 15px;
   opacity: 0.6;
   transition: opacity 0.3s ease;
+  color: $text-color !important;
 }
 
+.banner-content .btn-main {
+  padding: 10px 24px;
+}
