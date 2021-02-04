@@ -1,8 +1,18 @@
 .filter-box {
-  border: 1px solid grey;
-  border-radius: 5px;
-  background: grey;
+  border: 5px solid lightgray;
+  border-radius: 15px;
+  background: lightgray;
   font-family:'Courier New', Courier, monospace;
-  height: 100px;
-  width: 100px;
+  height: 320px;
+  width: 280px;
+  padding: 10px;
+ }
+h1 {
+  font-size: 24px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 'bold';
+}
+h2 {
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
 }

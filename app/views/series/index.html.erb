@@ -1,17 +1,23 @@
-<div class="container justify-content-center">
-  <h1 class="">All series</h1>
-
-  <div class="d-flex align-items flex-wrap">
-
-  <% @series.each do |serie|%>
-    <div class="card d-flex align-items m-3" style="width: 18rem">
-      <div class="card-body d-flex align-items">
-        <h2 class="card-title "> <%= serie.title%> </h2>
-        <p class="card-title "> <%= serie.synopsis%> </p>
-        <p class="card-title "> <%= serie.genre%> </p>
-        <p class="card-title "> <%= serie.platform%> </p>
-      </div>
+<div class="banner">
+  <div class="container d-flex justify-content-between">
+    <div class="filter-box">
+      <h1>Search filters</h1>
+      <br>
+      <h2>by most recent releases</h2>
+      <h2>by genre</h2>
+      <h2>by name</h2>
+      <h2>by score</h2>
     </div>
-    <%end%>
+
+    <div class="result">
+      <% @series.each do |serie|%>
+        <div class="result-container m-3">
+          <h2>title: <%=link_to serie.title, series_path(serie)%></h2>
+          <p>synopsis: <%=serie.synopsis%></p>
+          <p>genre: <%=serie.genre%></p>
+          <p>platform: <%=serie.platform%></p>
+        </div>
+      <%end%>
+    </div>
   </div>
 </div>
