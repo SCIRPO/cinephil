@@ -1,6 +1,7 @@
 <div class="container">
   <h1><%= @serie.title %></h1>
   <h2><%= @serie.synopsis %> </h2>
+  <%=link_to "LIKE", series_likes_path(@serie), method: :post%>
   <div class="container justify-content-center">
     <div class="image">
     <%= cl_image_tag("samples/imagecon-group.jpg",
