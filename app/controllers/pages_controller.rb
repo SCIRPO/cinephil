@@ -5,6 +5,6 @@ class PagesController < ApplicationController
   end
 
   def whishlist
-    @likes = current_user.likes
+    @likes = current_user.likes.where(viewed:false)
   end
 end

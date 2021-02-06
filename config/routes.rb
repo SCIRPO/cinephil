@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   # get '/series/:id', to: 'series#show', as: :show
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/whishlist', to: 'pages#whishlist'
+  post '/viewed', to: 'series#viewed'
 end
