@@ -1,0 +1,15 @@
+h1 {
+    color: $title-text-color;
+    font-weight: 900;
+    margin: auto;
+    padding: 15px;
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: center;
+  }
+
+p {
+  color: $text-color;
+}
