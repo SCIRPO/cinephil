@@ -6,6 +6,14 @@ Rails.application.routes.draw do
     resources :likes, only: [:create ]
     resources :viewings, only: [:create]
   end
+  resources :seasons do
+    resources :likes, only: [:create ]
+    resources :viewings, only: [:create]
+  end
+  resources :episodes do
+    resources :likes, only: [:create ]
+    resources :viewings, only: [:create]
+  end
   # get '/series/:id', to: 'series#show', as: :show
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/whishlist', to: 'pages#whishlist'

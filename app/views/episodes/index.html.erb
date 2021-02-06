@@ -1,0 +1,8 @@
+<div class="result">
+      <% @episodes.each do |episode|%>
+        <div class="result-container m-3">
+          <h2>title: <%=link_to episode.title, episodes_path(episode)%></h2>
+          <p>synopsis: <%=episode.synopsis%></p>
+        </div>
+      <%end%>
+    </div>
