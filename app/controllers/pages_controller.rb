@@ -4,4 +4,7 @@ class PagesController < ApplicationController
   def home
   end
 
+  def whishlist
+    @likes = current_user.likes
+  end
 end
