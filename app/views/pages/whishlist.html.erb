@@ -18,8 +18,10 @@
             <div class="result-container m-3">
               <h2>title: <%=like.serie.title%></h2>
               <p>synopsis: <%=like.serie.synopsis%></p>
-              <p>genre: <%=like.serie.genre%></p>
-              <p>platform: <%=like.serie.platform%></p>
+              <p>genre: <%=like.serie.genres%></p>
+              <p>platform: <%=like.serie.platforms%></p>
+              <%= link_to 'Tag as viewed', viewed_path(serie: like.serie), method: :post%>
+              <a href="..." class="btn btn-warning">Trash</a>
             </div>
           <%end%>
         </div>
