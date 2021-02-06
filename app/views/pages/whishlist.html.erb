@@ -1,6 +1,6 @@
-  <% if @likes.nil? %>
+  <% if @likes.count == 0 %>
     <p> You have no content </p>
-  <% else %>
+    <% else %>
 
     <div class="banner">
       <div class="container d-flex justify-content-between">
