@@ -1,0 +1,28 @@
+  <% if @likes.nil? %>
+    <p> You have no content </p>
+  <% else %>
+
+    <div class="banner">
+      <div class="container d-flex justify-content-between">
+        <div class="filter-box">
+          <h1>Your whislist</h1>
+          <br>
+          <h2>by most recent releases</h2>
+          <h2>by genre</h2>
+          <h2>by name</h2>
+          <h2>by score</h2>
+        </div>
+
+        <div class="result">
+          <% @likes.each do |like|%>
+            <div class="result-container m-3">
+              <h2>title: <%=like.serie.title%></h2>
+              <p>synopsis: <%=like.serie.synopsis%></p>
+              <p>genre: <%=like.serie.genre%></p>
+              <p>platform: <%=like.serie.platform%></p>
+            </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  <%end%>
