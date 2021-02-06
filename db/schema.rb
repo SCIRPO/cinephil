@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_30_172101) do
+ActiveRecord::Schema.define(version: 2021_02_06_150407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2021_01_30_172101) do
     t.string "title"
     t.integer "episode_number"
     t.text "synopsis"
-    t.integer "duration"
     t.bigint "season_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_01_30_172101) do
     t.bigint "serie_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "viewed", default: false
     t.index ["serie_id"], name: "index_likes_on_serie_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
@@ -63,16 +63,19 @@ ActiveRecord::Schema.define(version: 2021_01_30_172101) do
     t.bigint "serie_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "season_rating", default: 0
     t.index ["serie_id"], name: "index_seasons_on_serie_id"
   end
 
   create_table "series", force: :cascade do |t|
     t.string "title"
     t.text "synopsis"
-    t.string "genre"
-    t.string "platform"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "platforms", array: true
+    t.string "genres", array: true
+    t.integer "serie_rating", default: 0
+    t.date "release_date"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,7 +92,7 @@ ActiveRecord::Schema.define(version: 2021_01_30_172101) do
   end
 
   create_table "viewings", force: :cascade do |t|
-    t.integer "rating"
+    t.integer "rating", default: 0
     t.bigint "user_id", null: false
     t.bigint "episode_id", null: false
     t.datetime "created_at", precision: 6, null: false
