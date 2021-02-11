@@ -1,7 +1,7 @@
 <div class="result">
       <% @seasons.each do |season|%>
         <div class="result-container m-3">
-          <h2>title: <%=link_to season.title, seasons_path(season) %></h2>
+          <h2>title: <%=link_to season.title, season_path(season) %></h2>
           <p>synopsis: <%=season.synopsis%></p>
         </div>
       <%end%>
