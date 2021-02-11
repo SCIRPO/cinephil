@@ -1,7 +1,12 @@
 class SeriesController < ApplicationController
 
   def index
-    @series = Serie.all
+    if [params[:name], params[:genre], params[:year]].any?
+      sql_query = "title ILIKE :name OR synopsis ILIKE :name"
+      @series = Serie.where(sql_query, name: "%#{params[:name]}%")
+    else
+      @series = Serie.all
+    end
   end
 
   def show
