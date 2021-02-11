@@ -2,60 +2,46 @@
 
   <!-- Left : Serie Poster Left  -->
   <div class="pl-5">
-    <%= cl_image_tag("samples/imagecon-group.jpg", width: 400, height: 600, radius: 30, crop: :fill) %>
+    <%= cl_image_tag @serie.photo.key, height: 400, width: 300, crop: :pad %>
   </div>
 
-  <!-- Right : Serie Main Features & Seasons -->
+     <!-- Right : Serie Main Features & Seasons -->
   <div class="flex-grow-1 pl-5">
 
     <div class="mb-3 d-flex align-items-center">
       <h3><%= @serie.title %></h3>
-
       <%=link_to "ADD TO MY WISHLIST", series_likes_path(@serie), class: "btn-main", method: :post%>
     </div>
 
-    <div class="mb-3 d-flex align-items-center">
+    <!-- <div class="mb-3 d-flex align-items-center">
       <h4><%= @serie.serie_rating %></h4>
       <h4><%= @serie.release_date %></h4>
       <h4>3 seasons</h4>
       <h4>18 episodes</h4>
-    </div>
+    </div> -->
 
     <div class="mb-2 mb-50 d-flex align-items-center">
-      <div class="justify-center">
-        <h4>GENRE</h4>
-        <p><%= @serie.genres %></p>
+      <div class="genre-tags">
+        <p>GENRES</p>
+        <% @serie.genres.each do |genre|%>
+          <p class="genre">
+            <%= genre.to_s %>
+          </p>
+        <%end%>
       </div>
-      <div class="justify-center">
-        <h4>DURATION</h4>
-        <p>1 080 mns</p>
-      </div>
-      <div class="justify-center">
-        <h4>PLATFORMS</h4>
-        <p><%= @serie.platforms %></p>
-      </div>
-    </div>
 
-    <div class="mb-2 mt-50 d-flex align-items-center">
+      <div class="platform-tags">
+      <% @serie.platforms.each do |platform| %>
+        <p class="platform">
+          <%= platform.to_s %>
+        </p>
+      <%end %>
+      </div>
+
+      <div class="mb-2 mt-50 d-flex align-items-center">
       <p><%= @serie.synopsis %></p>
-    </div>
+      </div>
 
+    </div>
   </div>
-
-</div>
-
-<div class="result">
-  <% @serie.seasons.each do |season|%>
-    <div class="result-container m-3">
-      <h2>title: <%= season.title %></h2>
-      <p> <%=season.season_number%></p>
-      <p>synopsis: <%=season.synopsis%></p>
-    </div>
-  <% season.episodes.each do |episode|%>
-    <div class="result-container m-3">
-      <%= episode.title %>
-      <%= episode.synopsis %>
-    </div>
-  <%end %>
-<%end%>
-</div>
+ </div>
