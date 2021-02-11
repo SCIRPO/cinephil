@@ -1,14 +1,6 @@
 <div class="banner">
   <div class="container d-flex justify-content-between">
-    <div class="filter-box">
-      <h1>Search filters</h1>
-      <br>
-      <h2>by most recent releases</h2>
-      <h2>by genre</h2>
-      <h2>by name</h2>
-      <h2>by score</h2>
-    </div>
-
+    <%= render "search" %>
     <div class="result">
       <% @series.each do |serie|%>
         <div class="result-container m-3">
