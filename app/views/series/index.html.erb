@@ -1,21 +1,50 @@
 <div class="banner">
-  <div class="container d-flex justify-content-between">
-    <div class="filter-box">
-      <h1>Search filters</h1>
+    <div class="page-title">
+      <h1>Series</h1>
+    </div>
+
+  <div class=" d-flex justify-content-between">
+    <div class="filter-box col-3">
+      <h2>Search filters</h2>
       <br>
       <h2>by most recent releases</h2>
       <h2>by genre</h2>
       <h2>by name</h2>
       <h2>by score</h2>
     </div>
-
-    <div class="result">
+    <div class="col-9">
       <% @series.each do |serie|%>
-        <div class="result-container m-3">
-          <h2>title: <%=link_to serie.title, series_path(serie)%></h2>
-          <p>synopsis: <%=serie.synopsis%></p>
-          <p>genre: <%=serie.genres%></p>
-          <p>platform: <%=serie.platforms%></p>
+        <div class="result-container m-2">
+          <div class="row">
+              <div class="col-2 m-2">
+                <%= cl_image_tag serie.photo.key, height: 240, width: 160, crop: :pad %>
+              </div>
+              <div class="col-8 mx-3">
+                <h3><%=link_to serie.title, series_path(serie)%></h3>
+                <div class="genre-tags">
+                  <% serie.genres.each do |genre|%>
+                      <p class="genre">
+                        <%= genre.to_s %>
+                      </p>
+                    <%end%>
+                <div class="platform-tags">
+                  <% serie.platforms.each do |platform| %>
+                      <p class="platform">
+                        <%= platform.to_s %>
+                      </p>
+                  <% end %>
+                </div>
+                </div>
+                <p><%=serie.synopsis%></p>
+              </div>
+              <div class="col-1 justify-content-end">
+                 <% likes_color_class = serie.likes.count != 0 ? "liked" : "normal" %>
+                 <div class="<%= likes_color_class %>">
+                    <i class="fas fa-bookmark"></i>
+
+                 </div>
+              </div>
+          </div>
         </div>
       <%end%>
     </div>

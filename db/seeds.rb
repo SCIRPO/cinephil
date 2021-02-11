@@ -22,11 +22,19 @@ puts 'Creating users...'
   user.save!
 end
 
+test_user = User.new(
+  username: 'test',
+  email: 'test@test.fr',
+  password: 'password'
+  )
+test_user.save!
+
 puts 'User created!'
 
 puts 'Fetching from API series and associated seasons and episodes'
 
 series_seed = [82856,1399,1426,61664]
+# series_seed = [82856]
 
 key = ENV['TMDB_API_KEY']
 series_id = series_seed.each do |serie|
@@ -36,6 +44,7 @@ series_id = series_seed.each do |serie|
   new_serie = Serie.new(
     title: series['name'],
     synopsis: series['overview'],
+    release_date: series['first_air_date'],
     genres: series['genres'].map { |genre| genre['name'] },
     platforms: series['networks'].map { |network| network['name']}
   )
@@ -52,11 +61,10 @@ series_id = series_seed.each do |serie|
     new_season.serie = new_serie
     new_season.save!
     # Get episodes
-    series['seasons'].each do |season|
+    # series['seasons'].each do |season|
       season_url = "https://api.themoviedb.org/3/tv/#{serie}/season/#{season['season_number']}?api_key=#{key}"
       season_serialized = open(season_url).read
       season = JSON.parse(season_serialized)
-
       season['episodes'].each do |episode|
         new_ep = Episode.new(
           episode_number: episode['episode_number'],
@@ -66,7 +74,7 @@ series_id = series_seed.each do |serie|
         new_ep.season = new_season
         new_ep.save!
       end
-    end
+    # end
   end
 end
 
