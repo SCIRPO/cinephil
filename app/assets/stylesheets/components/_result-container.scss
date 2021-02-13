@@ -22,7 +22,7 @@
   padding: 0.5rem 2rem;
 }
 
-.genre-tags .platform-tags .title-tags .season_title-tags .add_wishlist-tags{
+.genre-tags .platform-tags .title-tags .season_title-tags .add_wishlist-tags .episodes_all-tags {
   display: inline-block;
 }
 
@@ -72,6 +72,12 @@
   vertical-align: middle;
   background-color: burlywood;
   border-radius: 10px;
+}
+
+.season_synopsis {
+  font-size: medium;
+  text-align: left;
+  padding: 0px 0px 0px 13px  ;
 }
 
 .add_wishlist {

@@ -1,13 +1,10 @@
 <div class="d-flex">
-
   <!-- Left : Serie Poster Left  -->
   <div class="pl-5">
     <%= cl_image_tag @serie.photo.key, height: 400, width: 300, crop: :pad %>
   </div>
-
-     <!-- Right : Serie Main Features & Seasons -->
+   <!-- Right : Serie Main Features & Seasons -->
   <div class="flex-grow-1 pl-5">
-
     <div class="mb-3 d-flex align-items-center">
       <h3><%= @serie.title %></h3>
       <%=link_to "ADD TO MY WISHLIST", series_likes_path(@serie), class: "add_wishlist", method: :post%>
@@ -57,28 +54,43 @@
       </div>
     </div>
 
-    <div class="w-50 mb-2 mt-50 d-flex align-items-center">
+    <div class="w-75 mb-2 mt-50 d-flex align-items-center">
       <p><%= @serie.synopsis %></p>
     </div>
 
-
-    <div class="w-50 mb-2 mt-50 d-flex align-items-center">
+    <div class="w-75 mb-2 mt-50 d-flex align-items-center">
       <div class="result">
         <% @serie.seasons.each do |season|%>
+          <br>
           <div class="season_title-tags">
             <div class="season_title">
               <%= season.title %>
             </div>
-          </div>
-          <p><%= season.synopsis%></p>
-           <% season.episodes.each do |episode|%>
-          <div class="title-tags">
-            <div class="title">
-              <%= episode.title %>
+
+            <div class="season_synopsis">
+              <%= season.synopsis%>
             </div>
-          </div>
-            <p><%= episode.synopsis%></p>
-            <% end %>
+
+            <div class="accordion" id="accordion">
+              <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapse-<%= season.id %>" >
+                All episodes here
+              </button>
+            
+              <% season.episodes.each do |episode|%>
+
+                <div id="collapse-<%= season.id %>" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                    <div class="title-tags">
+                      <div class="title">
+                        <p>Episode<%= episode.episode_number %>: <%= episode.title %></p>
+                      </div>
+                    </div>
+                    <p><%= episode.synopsis%></p>
+                  </div>
+                </div>
+              <% end %>   
+            </div>
+          </div>    
         <% end %>
       </div>
     </div>
