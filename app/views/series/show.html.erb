@@ -7,7 +7,9 @@
   <div class="flex-grow-1 pl-5">
     <div class="mb-3 d-flex align-items-center">
       <h3><%= @serie.title %></h3>
-      <%=link_to "ADD TO MY WISHLIST", series_likes_path(@serie), class: "add_wishlist", method: :post%>
+      <% unless Like.find_by(user: current_user, serie: @serie)%>
+        <%=link_to "ADD TO MY WISHLIST", series_likes_path(@serie), class: "add_wishlist", method: :post%>
+      <%end%>
     </div>
 
     <div class="mb-2 mb-50 d-flex align-items-center">

@@ -22,6 +22,7 @@ class SeriesController < ApplicationController
   end
 
   def viewed
+    #raise
     # find the serie
     serie = Serie.find(params["serie"])
 

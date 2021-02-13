@@ -4,9 +4,14 @@
   <div class="banner-content">
     <h1>Never forget a series. Ever again.</h1>
     <!-- search bar -->
-    <input type="text" placeholder="Find a show" class="search-bar">
-
-    <%= link_to "Explore", "#", class: "btn-main" %>
+    <%= form_tag series_index_path, method: :get do %>
+      <%= text_field_tag :name_query,
+      params[:name_query],
+      class: "search-bar",
+      placeholder: "Find a series"
+      %>
+      <%= submit_tag "Explore", class: "btn-main" %>
+    <% end %>
   </div>
 </div>
 
