@@ -1,11 +1,18 @@
 class SeriesController < ApplicationController
 
   def index
-    if [params[:name], params[:genre], params[:year]].any?
-      sql_query = "title ILIKE :name OR synopsis ILIKE :name"
-      @series = Serie.where(sql_query, name: "%#{params[:name]}%")
-    else
-      @series = Serie.all
+    @series = Serie.all
+    if params[:name_query].present?
+      sql_query = "title ILIKE :name_query"
+      @series = @series.where(sql_query, name_query: "%#{params[:name_query]}%")
+    end
+    if params[:genre_query].present?
+      sql_query = ":strict_query = ANY (genres)"
+      @series = @series.where(sql_query, strict_query: "#{params[:genre_query]}")
+    end
+    if params[:platform_query].present?
+      sql_query = ":strict_query = ANY (platforms)"
+      @series = @series.where(sql_query, strict_query: "#{params[:platform_query]}")
     end
   end
 
@@ -31,6 +38,7 @@ class SeriesController < ApplicationController
         Viewing.new(episode: episode, user: current_user)
       end
     end
+    redirect_to whishlist_path
   end
 
   def series_params

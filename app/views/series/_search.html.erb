@@ -2,24 +2,19 @@
   <h1>Search filters</h1>
   <br>
   <div class="d-flex justify-content-center">
-    <!--<h2>by most recent releases</h2> -->
-    <!--<h2>by genre</h2>-->
-    <!--<h2>by name</h2>-->
-    <!--<h2>by score</h2>-->
-      <form class="form-inline">
-        <%= form_tag series_index_path, method: :get do %>
-          <%= text_field_tag :name, params[:name], class: "form-control", placeholder: "By name..."%>
-          <br>
-          <br>
-          <%= text_field_tag :genre, params[:genre], class: "form-control", placeholder: "By genre..."%>
-          <br>
-          <br>
-          <%= text_field_tag :year, params[:year], class: "form-control", placeholder: "By release year..."
-          %>
-          <br>
-          <br>
-          <%= submit_tag "Search", class: "justify-content-center btn btn-primary" %>
-        <% end %>
-      </form>
-    </div>
+    <form class="form-inline">
+      <%= form_tag series_index_path, method: :get do %>
+        <%= text_field_tag :name_query, params[:name_query], class: "form-control", placeholder: "By name..."%>
+        <br>
+        <br>
+        <%= select_tag :genre_query, options_for_select(Serie::GENRELIST, params[:genre_query]), include_blank: true, :prompt => "Genre...", class: "form-control"%>
+        <br>
+        <br>
+        <%= select_tag :platform_query, options_for_select(Serie::PLATFORMLIST, params[:platform_query]), include_blank: true, :prompt => "Platform...", class: "form-control"%>
+        <br>
+        <br>
+        <%= submit_tag "Search", class: "btn search-button" %>
+      <% end %>
+    </form>
+  </div>
 </div>
