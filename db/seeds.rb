@@ -33,7 +33,7 @@ puts 'User created!'
 
 puts 'Fetching from API series and associated seasons and episodes'
 
-series_seed = [82856,1399,1426,61664]
+series_seed = series_seed = [82856,1399,1426,61664,46639,74204,40008,87739,1396,76479,1835,1409,91875,71446,71578,91239,900,42009,72750,1981,88408,62699,1425,70523,67178,78191,67744,96677,81354]
 # series_seed = [82856]
 
 key = ENV['TMDB_API_KEY']
