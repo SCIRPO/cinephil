@@ -28,6 +28,7 @@
                 </div>
                 </div>
                 <p><%=serie.synopsis%></p>
+                <p>Release date: <%=serie.release_date.year%>/<%=serie.release_date.month%></p>
               </div>
               <div class="col-1 justify-content-end">
                  <% likes_color_class = serie.likes.count != 0 ? "liked" : "normal" %>
