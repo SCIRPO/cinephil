@@ -11,7 +11,7 @@
               <div class="col-2 m-2">
                 <%= cl_image_tag serie.photo.key, height: 240, width: 160, crop: :pad %>
               </div>
-              <div class="col-8 mx-3">
+              <div class="col-8 mx-3" >
                 <h3><%=link_to serie.title, series_path(serie)%></h3>
                 <div class="genre-tags">
                   <% serie.genres.each do |genre|%>
@@ -19,6 +19,12 @@
                         <%= genre.to_s %>
                       </p>
                     <%end%>
+                </div>
+
+                <p class="col-12 overflow-auto" style='height: 150px;'>
+                    <%=serie.synopsis%>
+                </p>
+                                                
                 <div class="platform-tags">
                   <% serie.platforms.each do |platform| %>
                       <p class="platform">
@@ -26,9 +32,23 @@
                       </p>
                   <% end %>
                 </div>
+                   <div class="mb-2 mb-50 d-flex align-items-center">
+                <div class="release_date-tags">
+                  <p class="release_date">
+                    <%=serie.release_date.year%>/<%=serie.release_date.month%>
+                  </p>
                 </div>
-                <p><%=serie.synopsis%></p>
-                <p>Release date: <%=serie.release_date.year%>/<%=serie.release_date.month%></p>
+                <div class="release_date-tags">
+                  <p class="release_date">
+                    <%=serie.seasons.last.season_number%> seasons
+                  </p>
+                </div>
+                <div class="release_date-tags">
+                  <p class="release_date">
+                    <%=serie.episode_count %> episodes
+                  </p>
+                </div>
+                </div>
               </div>
               <div class="col-1 justify-content-end">
                  <% likes_color_class = serie.likes.count != 0 ? "liked" : "normal" %>
