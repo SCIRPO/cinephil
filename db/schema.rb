@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_06_150407) do
+ActiveRecord::Schema.define(version: 2021_02_18_200323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,11 +94,12 @@ ActiveRecord::Schema.define(version: 2021_02_06_150407) do
   create_table "viewings", force: :cascade do |t|
     t.integer "rating", default: 0
     t.bigint "user_id", null: false
-    t.bigint "episode_id", null: false
+    t.bigint "viewable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["episode_id"], name: "index_viewings_on_episode_id"
+    t.string "viewable_type"
     t.index ["user_id"], name: "index_viewings_on_user_id"
+    t.index ["viewable_id"], name: "index_viewings_on_viewable_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -106,6 +107,6 @@ ActiveRecord::Schema.define(version: 2021_02_06_150407) do
   add_foreign_key "likes", "series", column: "serie_id"
   add_foreign_key "likes", "users"
   add_foreign_key "seasons", "series", column: "serie_id"
-  add_foreign_key "viewings", "episodes"
+  add_foreign_key "viewings", "episodes", column: "viewable_id"
   add_foreign_key "viewings", "users"
 end
