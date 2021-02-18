@@ -11,4 +11,8 @@ class PagesController < ApplicationController
   def view
     @views = current_user.likes.where(viewed:true)
   end
+
+  def library
+    @viewings = current_user.viewings
+  end
 end
