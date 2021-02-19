@@ -31,3 +31,7 @@ import initCountup from '../plugins/init_countup'
 document.addEventListener('turbolinks:load', () => {
   initCountup()
 });
+
+import { initStarRating } from '../plugins/init_star_rating';
+
+initStarRating();
