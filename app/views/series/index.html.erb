@@ -5,7 +5,7 @@
   <div class="container d-flex justify-content-between">
     <%= render "search" %>
     <div class="result">
-        <% @series.each do |serie|%>
+        <% @series.each do |serie| %>
         <div class="result-container m-2">
           <div class="row">
               <div class="col-2 m-2">
@@ -51,12 +51,17 @@
                 </div>
               </div>
               <div class="col-1 justify-content-end">
-                 <% likes_color_class = serie.likes.count != 0 ? "liked" : "normal" %>
-                 <div class="<%= likes_color_class %>">
-                    <i class="fas fa-bookmark"></i>
-                 </div>
+                <% if Like.find_by(user: current_user, serie: serie)%>
+                  <%= link_to(like_path(serie.likes.find_by(user: current_user, serie: serie)), class: "added-wishlist", method: :delete) do %>
+                  <i class="fas fa-heart"></i>
+                  <% end %>
+                <% else %> 
+                  <%= link_to(series_likes_path(serie), class: "add-wishlist", method: :post) do %>
+                  <i class="far fa-heart"></i>
+                  <% end %>
+                <%end%>
               </div>
-          </div>
+            </div>
         </div>
       <%end%>
     </div>
