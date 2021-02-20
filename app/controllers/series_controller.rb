@@ -48,7 +48,7 @@ class SeriesController < ApplicationController
       end
     end
     redirect_to whishlist_path
-  end
+  #end
 
   def series_params
     params.require(:serie).permit(:photo)
