@@ -1,6 +1,10 @@
 class ViewingsController < ApplicationController
   def index
-    @viewings = Viewing.current_user.all
+    @viewings = current_user.viewings
+  end
+
+  def show
+    @viewing = Viewing.find(params[:id])
   end
 
   def create
@@ -11,11 +15,11 @@ class ViewingsController < ApplicationController
   end
 
   def update
-    @viewable = params[:viewable_type].constantize.find(params[:viewable_id])
-    @viewing = Viewing.find(params[:viewable_id])
-    @viewing.rating = params[:rating]
+    @viewing = Viewing.find(params[:id])
+    @viewing.rating = params[:viewing][:rating]
+    @viewing.user = current_user
     @viewing.save
-    redirect_to series_path(@viewable)
+    redirect_to library_path(anchor: "edit_viewing_#{@viewing.id}")
   end
 
   def destroy

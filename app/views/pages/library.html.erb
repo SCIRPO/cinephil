@@ -1,5 +1,38 @@
-<h1>My Library</h1>
+<h1>Personal Library</h1>
 
-<%= Viewing.count %>
-
-
+  <!-- Partie pour les users -->
+  <% if @viewings.nil? %>
+    <p> Nothing in your library yet</p>
+  <% else %>
+    <p>You currently have <%= @viewings.count%> watched contents: </p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Type</th>
+          <th scope="col">Title</th>
+          <th scope="col">Watching date</th>
+          <th scope="col">Rate your experience</th>
+          <th scope="col">Platform</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @viewings.each_with_index do |viewing, index|%>
+          <tr>
+            <th scope="col"><%= index +1 %></th>
+            <th scope="col"><%= viewing.viewable_type%></th>
+            <th scope="col"><%= viewing.viewable.title%></th>
+            <th scope="col"><%= viewing.created_at%></th>
+            <th scope="col">
+              <%= render "rating", viewing: viewing %>
+            </th>
+            <th scope="col">
+              <% viewing.platforms.each do |platform| %>
+                <%= platform.to_s %>
+              <% end %>
+            </th>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  <% end %>

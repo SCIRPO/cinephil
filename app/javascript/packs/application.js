@@ -27,11 +27,11 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import initCountup from '../plugins/init_countup'
+import { initStarRating } from '../plugins/init_star_rating';
 
 document.addEventListener('turbolinks:load', () => {
   initCountup()
+  initStarRating();
 });
 
-import { initStarRating } from '../plugins/init_star_rating';
 
-initStarRating();
