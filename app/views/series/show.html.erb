@@ -7,11 +7,18 @@
   <div class="flex-grow-1 pl-5">
     <div class="mb-3 d-flex align-items-center">
       <h3><%= @serie.title %></h3>
-      <% unless Like.find_by(user: current_user, serie: @serie)%>
-        <%=link_to "ADD TO MY WISHLIST", series_likes_path(@serie), class: "add_wishlist", method: :post%>
-      <%end%>
-    </div>
-
+      <div>
+        <% if Like.find_by(user: current_user, serie: @serie)%>
+          <%= link_to(like_path(@serie.likes.find_by(user: current_user, serie: @serie)), class: "added-wishlist", method: :delete) do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %> 
+          <%= link_to(series_likes_path(@serie), class: "add-wishlist", method: :post) do %>
+            <i class="far fa-heart"></i>
+          <% end %>
+        <%end%>
+      </div>
+    </div>                
     <div class="mb-2 mb-50 d-flex align-items-center">
       <div class="release_date-tags">
         <p class="release_date">
