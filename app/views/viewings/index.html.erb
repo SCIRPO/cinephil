@@ -1,0 +1,20 @@
+<div class="banner">
+  <div class="page-title">
+    <h1>Watched Series</h1>
+  </div>
+  <div class="container d-flex justify-content-between">
+    <div class="result">
+      <% @viewings.each do |viewing|%>
+        <div class="result-container m-2">
+          <div class="row">
+            <%=link_to(viewing_path(viewing)) do %>
+              <div class="col-8 mx-3">
+                <h3><%=viewing.serie.title%></h3>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

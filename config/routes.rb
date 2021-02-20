@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/whishlist', to: 'pages#whishlist'
   get '/library', to: 'pages#library'
   post '/viewed', to: 'series#viewed'
-  resources :viewings, only: [:create, :destroy]
-
+  #resources :viewings, only: [:create, :destroy]
+  resources :viewings
 
 end

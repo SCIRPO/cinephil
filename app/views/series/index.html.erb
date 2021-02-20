@@ -4,9 +4,9 @@
   </div>
   <div class="container d-flex justify-content-between">
     <%= render "search" %>
-    <div class="result">
+    <div class="result pl-2">
         <% @series.each do |serie|%>
-        <div class="result-container m-2">
+        <div class="result-container ">
           <div class="row">
               <div class="col-2 m-2">
                 <%= cl_image_tag serie.photo.key, height: 240, width: 160, crop: :pad %>

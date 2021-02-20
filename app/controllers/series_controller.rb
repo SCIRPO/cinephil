@@ -36,7 +36,7 @@ class SeriesController < ApplicationController
     # create all the viewing for each episodes
     serie.seasons.each do |season|
       season.episodes.each do |episode|
-        Viewing.new(episode: episode, user: current_user)
+        Viewing.new(viewable: episode, user: current_user)
       end
     end
     redirect_to whishlist_path
