@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :series do
-    resources :likes, only: [:create ]
+    resources :likes, only: [:create, :destroy]
   end
   resources :seasons do
     resources :likes, only: [:create ]
