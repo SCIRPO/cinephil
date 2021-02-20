@@ -14,4 +14,8 @@ class Serie < ApplicationRecord
     end
     counter
   end
+
+  def viewed?(user)
+    Viewing.find_by(viewable: self, user: user)
+  end
 end

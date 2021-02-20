@@ -24,7 +24,7 @@
                 <p class="col-12 overflow-auto" style='height: 150px;'>
                     <%=serie.synopsis%>
                 </p>
-                                                
+
                 <div class="platform-tags">
                   <% serie.platforms.each do |platform| %>
                       <p class="platform">
@@ -35,28 +35,33 @@
                    <div class="mb-2 mb-50 d-flex align-items-center">
                 <div class="release_date-tags">
                   <p class="release_date">
-                    <%=serie.release_date.year%>/<%=serie.release_date.month%>
+                    <%= serie.release_date.year%>/<%=serie.release_date.month%>
                   </p>
                 </div>
                 <div class="release_date-tags">
                   <p class="release_date">
-                    <%=serie.seasons.last.season_number%> seasons
+                    <%= serie.seasons.last.season_number %> seasons
                   </p>
                 </div>
                 <div class="release_date-tags">
                   <p class="release_date">
-                    <%=serie.episode_count %> episodes
+                    <%= serie.episode_count %> episodes
                   </p>
                 </div>
                 </div>
               </div>
               <div class="col-1 justify-content-end">
-                 <% likes_color_class = serie.likes.count != 0 ? "liked" : "normal" %>
-                 <div class="<%= likes_color_class %>">
-                    <i class="fas fa-bookmark"></i>
-                 </div>
+                <% if Like.find_by(user: current_user, serie: serie)%>
+                  <%= link_to(like_path(serie.likes.find_by(user: current_user, serie: serie)), class: "added-wishlist", method: :delete) do %>
+                  <i class="fas fa-heart"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to(series_likes_path(serie), class: "add-wishlist", method: :post) do %>
+                  <i class="far fa-heart"></i>
+                  <% end %>
+                <%end%>
               </div>
-          </div>
+            </div>
         </div>
       <%end%>
     </div>

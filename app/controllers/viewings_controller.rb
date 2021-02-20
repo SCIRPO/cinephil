@@ -11,7 +11,7 @@ class ViewingsController < ApplicationController
     @viewable = params[:viewable_type].constantize.find(params[:viewable_id])
     @viewing = Viewing.create(user: current_user, viewable: @viewable)
     @viewing.save
-    redirect_to @viewable.serie
+    redirect_to series_path(@viewable)
   end
 
   def update
@@ -24,7 +24,8 @@ class ViewingsController < ApplicationController
 
   def destroy
     @viewing = Viewing.find(params[:id])
+    @viewable = @viewing.viewable
     @viewing.destroy
-    redirect_to @viewing.serie
+    redirect_to series_path(@viewable)
   end
 end
