@@ -1,10 +1,11 @@
-<h1>Personal Library</h1>
-
-  <!-- Partie pour les users -->
+<div class="container text-center">
+  <h1>Personal Library</h1>
   <% if @viewings.nil? %>
-    <p> Nothing in your library yet</p>
-  <% else %>
-    <p>You currently have <%= @viewings.count%> watched contents: </p>
+    <p class="text-center"> Nothing in your library yet</p>
+    <% else %>
+    <p class="text-center">You currently have <%= @viewings.count%> watched contents: </p>
+    <br>
+    <br>
     <table class="table">
       <thead>
         <tr>
@@ -36,3 +37,4 @@
       </tbody>
     </table>
   <% end %>
+</div>
