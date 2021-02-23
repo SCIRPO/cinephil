@@ -11,7 +11,7 @@
     <div class="mb-3 d-flex align-items-center">
       <h3><%= @serie.title %></h3>
       <% unless Like.find_by(user: current_user, serie: @serie) %>
-        <%= link_to "ADD TO MY WISHLIST", series_likes_path(@serie), class: "add_wishlist", method: :post %>
+        <%= link_to "444 ADD TO MY WISHLIST", series_likes_path(@serie), class: "add_wishlist", method: :post %>
       <% end %>
       <div class="viewing mt-50">
         <% viewed = @serie.viewed?(current_user) %>
