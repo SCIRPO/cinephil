@@ -42,12 +42,12 @@ class SeriesController < ApplicationController
   # end
 
     # create all the viewing for each episodes
-    serie.seasons.each do |season|
-      season.episodes.each do |episode|
-        Viewing.new(viewable: episode, user: current_user)
-      end
-    end
-    redirect_to whishlist_path
+  #  serie.seasons.each do |season|
+   #   season.episodes.each do |episode|
+    #    Viewing.new(viewable: episode, user: current_user)
+     # end
+    #end
+   # redirect_to whishlist_path
   #end
 
   def series_params
