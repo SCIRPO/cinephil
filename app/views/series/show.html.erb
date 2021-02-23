@@ -8,11 +8,14 @@
 
    <!-- Right : Serie Main Features & Seasons -->
   <div class="flex-grow-1 pl-5">
+
     <div class="mb-3 d-flex align-items-center">
       <h3><%= @serie.title %></h3>
-      <% unless Like.find_by(user: current_user, serie: @serie) %>
+
+      <!-- <% unless Like.find_by(user: current_user, serie: @serie) %>
         <%= link_to "444 ADD TO MY WISHLIST", series_likes_path(@serie), class: "add_wishlist", method: :post %>
-      <% end %>
+      <% end %> -->
+
       <div class="viewing mt-50">
         <% viewed = @serie.viewed?(current_user) %>
         <% if viewed %>
@@ -25,7 +28,8 @@
           <% end %>
         <% end %>
       </div>
-    <div>
+
+      <div>
         <% if Like.find_by(user: current_user, serie: @serie)%>
           <%= link_to(like_path(@serie.likes.find_by(user: current_user, serie: @serie)), class: "added-wishlist", method: :delete) do %>
             <i class="fas fa-heart"></i>

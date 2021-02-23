@@ -30,6 +30,10 @@ class ViewingsController < ApplicationController
     @viewing = Viewing.find(params[:id])
     @viewable = @viewing.viewable
     @viewing.destroy
-    redirect_to series_path(@viewable)
+    if @viewing.viewable_type == "Serie"
+      redirect_to series_path(@viewable)
+    else
+      redirect_to series_path(@viewable.serie)
+    end
   end
 end
