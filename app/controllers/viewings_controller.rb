@@ -11,7 +11,11 @@ class ViewingsController < ApplicationController
     @viewable = params[:viewable_type].constantize.find(params[:viewable_id])
     @viewing = Viewing.create(user: current_user, viewable: @viewable)
     @viewing.save
-    redirect_to series_path(@viewable)
+    if @viewing.viewable_type == "Serie"
+      redirect_to series_path(@viewable)
+    else
+      redirect_to series_path(@viewable.serie)
+    end
   end
 
   def update
