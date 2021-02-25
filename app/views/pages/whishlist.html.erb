@@ -32,9 +32,18 @@
                 <div class="col-1 justify-content-end">
                    <% likes_color_class = like.serie.likes.count != 0 ? "liked" : "normal" %>
                    <div class="<%= likes_color_class %>">
-                    <%= link_to(viewed_path(serie: like.serie), method: :post) do %>
-                      <i class="fa fa-check-square" style="font-size: 20px"></i>
-                    <% end %>
+                    <div class="viewing mt-50">
+                      <% viewed = like.serie.viewed?(current_user) %>
+                      <% if viewed %>
+                          <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
+                            <i class="far fa-check-square" style="font-size: 20px"></i>
+                          <% end  %>
+                      <% else %>
+                          <%= link_to viewings_path(viewable_id: like.serie.id, viewable_type: like.serie.class), class: "add-to-view", method: :post, remote: true do %>
+                            <i class="far fa-square" style="font-size: 20px" ></i>
+                          <% end %>
+                      <% end %>
+                    </div>
                     <%= link_to(like_path(like), method: :delete) do %>
                       <i class="fas fa-trash" style="font-size: 20px"></i>
                     <% end %>
@@ -47,4 +56,3 @@
       </div>
     </div>
   <%end%>
-

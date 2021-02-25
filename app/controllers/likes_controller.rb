@@ -8,6 +8,7 @@ class LikesController < ApplicationController
       redirect_to whishlist_path
     elsif request.referer.match? /\Wseries\/[0-9].*/
       redirect_to series_path(@serie)
+
     else
       redirect_to series_index_path
     end
