@@ -1,3 +1,11 @@
+<%
+  colors = {
+    "Serie" => "library-green", 
+    "Season" => "library-blue",
+    "Episode" => "library-orange",
+  }
+%>
+
 <div class="container text-center">
   <h1>Personal Library</h1>
   <% if @viewings.nil? %>
@@ -19,11 +27,17 @@
       </thead>
       <tbody>
         <% @viewings.each_with_index do |viewing, index|%>
-          <tr>
+          <tr class="<%= colors[viewing.viewable_type]%>">
             <th scope="col"><%= index +1 %></th>
             <th scope="col"><%= viewing.viewable_type%></th>
-            <th scope="col"><%= viewing.viewable.title%></th>
-            <th scope="col"><%= viewing.created_at%></th>
+            <th scope="col">
+              <% if  viewing.viewable_type != "Serie"%>
+                <%= viewing.viewable.serie.title%>
+                <br>
+              <% end %>
+              <%= viewing.viewable.title%>
+            </th>
+            <th scope="col"><%= viewing.created_at.strftime("%d-%m-%Y")%></th>
             <th scope="col">
               <%= render "rating", viewing: viewing %>
             </th>
