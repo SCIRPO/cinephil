@@ -61,6 +61,18 @@
                   <% end %>
                 <%end%>
               </div>
+              <div class="viewing mt-50">
+                <% viewed = serie.viewed?(current_user) %>
+                <% if viewed %>
+                  <%= link_to viewings_path(viewable_id: serie.id, viewable_type: serie.class), class: "added-to-view", method: :delete do %>
+                    <i class="far fa-check-square"></i>
+                <% end %>
+                <% else %>
+                  <%= link_to viewings_path(viewable_id: serie.id, viewable_type: serie.class), class: "add-to-view", method: :post do %>
+                    <i class="far fa-square"></i>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
         </div>
       <%end%>
