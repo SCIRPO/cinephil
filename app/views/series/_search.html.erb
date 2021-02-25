@@ -1,19 +1,12 @@
 <div class="filter-box">
   <h1>Search filters</h1>
-  <br>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center w240">
     <form class="form-inline">
       <%= form_tag series_index_path, method: :get do %>
-        <%= text_field_tag :name_query, params[:name_query], class: "form-control", placeholder: "By name..."%>
-        <br>
-        <%= select_tag :genre_query, options_for_select(Serie::GENRELIST, params[:genre_query]), include_blank: true, :prompt => "Genre...", class: "form-control"%>
-        <br>
-        <br>
-        <br>
-        <%= select_tag :platform_query, options_for_select(Serie::PLATFORMLIST, params[:platform_query]), include_blank: true, :prompt => "Platform...", class: "form-control"%>
-        <br>
-        <br>
-        <%= submit_tag "Search", class: "btn search-button" %>
+        <%= text_field_tag :name_query, params[:name_query], class: "form-control search-bar w-100", placeholder: "By name..."%>
+        <%= select_tag :genre_query, options_for_select(Serie::GENRELIST, params[:genre_query]), include_blank: true, :prompt => "Genre...", class: "form-control search-bar w-100"%>
+        <%= select_tag :platform_query, options_for_select(Serie::PLATFORMLIST, params[:platform_query]), include_blank: true, :prompt => "Platform...", class: "form-control search-bar w-100"%>
+        <%= submit_tag "Search", class: "btn search-button w240 mt10" %>
       <% end %>
     </form>
   </div>
