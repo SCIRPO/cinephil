@@ -33,10 +33,10 @@
                    <% likes_color_class = like.serie.likes.count != 0 ? "liked" : "normal" %>
                    <div class="<%= likes_color_class %>">
                     <%= link_to(viewed_path(serie: like.serie), method: :post) do %>
-                      <i class="fa fa-check-square"></i>
+                      <i class="fa fa-check-square" style="font-size: 20px"></i>
                     <% end %>
                     <%= link_to(like_path(like), method: :delete) do %>
-                      <i class="fas fa-trash"></i>
+                      <i class="fas fa-trash" style="font-size: 20px"></i>
                     <% end %>
                     </div>
                 </div>

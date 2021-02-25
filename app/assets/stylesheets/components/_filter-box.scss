@@ -5,7 +5,7 @@
   font-family:'Courier New', Courier, monospace;
   height: 320px;
   width: 280px;
-  padding: 0px;
+  padding: 16px;
  }
 h1 {
   font-size: 24px;
@@ -21,11 +21,15 @@ h2 {
   min-width: 10px;
   padding: 3px 7px;
   font-size: large;
-  font-weight: 700;
-  line-height: 1;
+  font-weight: 500;
+  line-height: 2;
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: grey;
-  border-radius: 10px;
+  background-color: $highlight;
+  border: 1px solid $highlight;
+  border-radius: 6px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  color: $text-color !important;
 }
