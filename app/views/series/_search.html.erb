@@ -6,8 +6,8 @@
       <%= form_tag series_index_path, method: :get do %>
         <%= text_field_tag :name_query, params[:name_query], class: "form-control", placeholder: "By name..."%>
         <br>
-        <br>
         <%= select_tag :genre_query, options_for_select(Serie::GENRELIST, params[:genre_query]), include_blank: true, :prompt => "Genre...", class: "form-control"%>
+        <br>
         <br>
         <br>
         <%= select_tag :platform_query, options_for_select(Serie::PLATFORMLIST, params[:platform_query]), include_blank: true, :prompt => "Platform...", class: "form-control"%>
