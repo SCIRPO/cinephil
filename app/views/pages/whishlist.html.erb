@@ -1,58 +1,63 @@
-  <% if @likes.count == 0 %>
-    <p class="text-center"> You have no series in your wishlist </p>
-    <% else %>
-
-    <div class="banner">
-      <div class="container d-flex justify-content-between">
-        <div class="result">
-          <% @likes.each do |like|%>
-            <div class="result-container m-3">
-              <div class="row">
-                <div class="col-2 m-2">
-                  <%= cl_image_tag like.serie.photo.key, height: 240, width: 160, crop: :pad %>
-                </div>
-                <div class="col-8 mx-3">
-                  <h3><%= link_to like.serie.title, series_path(like.serie) %></h3>
-                  <div class="genre-tags">
-                    <% like.serie.genres.each do |genre|%>
-                        <p class="genre">
-                          <%= genre.to_s %>
-                        </p>
-                      <%end%>
-                  <div class="platform-tags">
-                    <% like.serie.platforms.each do |platform| %>
-                        <p class="platform">
-                          <%= platform.to_s %>
-                        </p>
-                    <% end %>
+  <div class="container text-center">
+    <h1>Wishlist</h1>
+  </div>
+    <% if @likes.count == 0 %>
+      <p class="text-center"> You have no series in your wishlist </p>
+      <% else %>
+      <div class="banner">
+        <div class="container d-flex justify-content-between">
+          <div class="result">
+            <% @likes.each do |like|%>
+              <div class="result-container m-3">
+                <div class="row">
+                  <div class="col-2 m-2">
+                    <%= cl_image_tag like.serie.photo.key, height: 240, width: 160, crop: :pad %>
                   </div>
-                  </div>
-                  <p><%=like.serie.synopsis%></p>
-                </div>
-                <div class="col-1 justify-content-end">
-                   <% likes_color_class = like.serie.likes.count != 0 ? "liked" : "normal" %>
-                   <div class="<%= likes_color_class %>">
-                    <div class="viewing mt-50">
-                      <% viewed = like.serie.viewed?(current_user) %>
-                      <% if viewed %>
-                          <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
-                            <i class="far fa-check-square" style="font-size: 20px"></i>
-                          <% end  %>
-                      <% else %>
-                          <%= link_to viewings_path(viewable_id: like.serie.id, viewable_type: like.serie.class), class: "add-to-view", method: :post, remote: true do %>
-                            <i class="far fa-square" style="font-size: 20px" ></i>
-                          <% end %>
+                  <div class="col-8 mx-3">
+                    <h3><%= link_to like.serie.title, series_path(like.serie) %></h3>
+                    <div class="genre-tags">
+                      <% like.serie.genres.each do |genre|%>
+                          <p class="genre">
+                            <%= genre.to_s %>
+                          </p>
+                        <%end%>
+                    <div class="platform-tags">
+                      <% like.serie.platforms.each do |platform| %>
+                          <p class="platform">
+                            <%= platform.to_s %>
+                          </p>
                       <% end %>
                     </div>
-                    <%= link_to(like_path(like), method: :delete) do %>
-                      <i class="fas fa-trash" style="font-size: 20px"></i>
-                    <% end %>
                     </div>
+                    <p><%=like.serie.synopsis%></p>
+                  </div>
+                  <div class="col-1 justify-content-end">
+                    <% likes_color_class = like.serie.likes.count != 0 ? "liked" : "normal" %>
+                    <div class="<%= likes_color_class %>">
+                      <div class="viewing mt-50" id="<%= like.serie.class %>-<%= like.serie.id %>">
+                        <% viewed = like.serie.viewed?(current_user) %>
+                        <% if viewed %>
+                            <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
+                              <i class="far fa-eye" style="font-size: 20px"></i>
+                            <% end  %>
+                        <% else %>
+                            <%= link_to viewings_path(viewable_id: like.serie.id, viewable_type: like.serie.class), class: "add-to-view", method: :post do %>
+                              <i class="fas fa-eye-slash" style="font-size: 20px" ></i>
+                            <% end %>
+                        <% end %>
+                      </div>
+                      <div id="like-<%=like.serie.id%>">
+                        <%= link_to(like_path(like), method: :delete) do %>
+                          <i class="fas fa-trash" style="font-size: 20px"></i>
+                        <% end %>
+                      </div>
+                      </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          <%end%>
+            <%end%>
+          </div>
         </div>
       </div>
-    </div>
   <%end%>
+

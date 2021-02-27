@@ -1,0 +1,6 @@
+var viewable = document.getElementById("<%= @viewable.class%>-<%= @viewable.id %>")
+viewable.innerHTML = `
+<a class="added-to-view" rel="nofollow" data-method="delete" data-remote="true" href="/viewings/<%= @viewing.id %>">
+            <i class="far fa-eye"></i>
+</a>
+`

@@ -1,0 +1,6 @@
+var serie = document.getElementById("like-<%=@serie.id%>")
+serie.innerHTML = `
+<a class="add-wishlist" data-remote="true" rel="nofollow" data-method="post" href="/series/<%= @serie.id %>/likes">
+  <i class="far fa-heart"></i>
+</a>
+`
