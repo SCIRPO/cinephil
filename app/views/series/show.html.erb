@@ -12,26 +12,26 @@
     <div class="mb-3 d-flex align-items-center">
       <h3><%= @serie.title %></h3>
 
-      <div class="viewing mt-50">
+      <div class="viewing mt-50" id="<%= @serie.class %>-<%= @serie.id %>">
         <% viewed = @serie.viewed?(current_user) %>
         <% if viewed %>
-          <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete do %>
+          <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
             <i class="far fa-check-square"></i>
         <% end %>
         <% else %>
-          <%= link_to viewings_path(viewable_id: @serie.id, viewable_type: @serie.class), class: "add-to-view", method: :post do %>
+          <%= link_to viewings_path(viewable_id: @serie.id, viewable_type: @serie.class), class: "add-to-view", method: :post, remote: true do %>
             <i class="far fa-square"></i>
           <% end %>
         <% end %>
       </div>
 
-      <div>
+      <div id="like-<%= @serie.id %>">
         <% if Like.find_by(user: current_user, serie: @serie)%>
-          <%= link_to(like_path(@serie.likes.find_by(user: current_user, serie: @serie)), class: "added-wishlist", method: :delete) do %>
+          <%= link_to(like_path(@serie.likes.find_by(user: current_user, serie: @serie)), class: "added-wishlist", method: :delete, remote: true) do %>
             <i class="fas fa-heart"></i>
           <% end %>
         <% else %>
-          <%= link_to(series_likes_path(@serie), class: "add-wishlist", method: :post) do %>
+          <%= link_to(series_likes_path(@serie), class: "add-wishlist", method: :post, remote: true) do %>
             <i class="far fa-heart"></i>
           <% end %>
         <%end%>
@@ -110,14 +110,14 @@
           <br>
           <div class="season_title-tags">
             <div class="season_title">
-            <div class="viewing mt-50">
+            <div class="viewing mt-50" id="<%= season.class %>-<%= season.id %>">
               <% viewed = season.viewed?(current_user) %>
               <% if viewed %>
-                  <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete do %>
+                  <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
                     <i class="far fa-check-square"></i>
                   <% end  %>
               <% else %>
-                  <%= link_to viewings_path(viewable_id: season.id, viewable_type: season.class), class: "add-to-view", method: :post do %>
+                  <%= link_to viewings_path(viewable_id: season.id, viewable_type: season.class), class: "add-to-view", method: :post, remote: true do %>
                     <i class="far fa-square"></i>
                   <% end %>
               <% end %>
@@ -139,14 +139,14 @@
                 <div id="collapse-<%= season.id %>" class="collapse" data-parent="#accordion">
                   <div class="card-body">
                     <div class="title-tags">
-                        <div class="viewing mt-50">
+                        <div class="viewing mt-50" id="<%= episode.class %>-<%= episode.id %>">
                           <% viewed = episode.viewed?(current_user) %>
                           <% if viewed %>
-                              <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete do %>
+                              <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
                                 <i class="far fa-check-square"></i>
                               <% end  %>
                           <% else %>
-                              <%= link_to viewings_path(viewable_id: episode.id, viewable_type: episode.class), class: "add-to-view", method: :post do %>
+                              <%= link_to viewings_path(viewable_id: episode.id, viewable_type: episode.class), class: "add-to-view", method: :post, remote: true do %>
                                 <i class="far fa-square"></i>
                               <% end %>
                           <% end %>

@@ -36,6 +36,11 @@
                 <br>
               <% end %>
               <%= viewing.viewable.title%>
+              <% if viewing.viewable_type == "Episode"  %>
+              <br>
+                <%= viewing.viewable.episode_number %>
+              <% end %>
+              
             </th>
             <th scope="col"><%= viewing.created_at.strftime("%d-%m-%Y")%></th>
             <th scope="col">
