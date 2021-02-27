@@ -5,34 +5,33 @@
   <div class="container d-flex justify-content-between">
     <%= render "search" %>
     <div class="result pl-4 ">
-        <% @series.each do |serie|%>
+      <% @series.each do |serie|%>
         <div class="hvr-bounce-in result-container m-1 p-2">
           <div class="row">
-              <div class="col-3">
-                <%= cl_image_tag serie.photo.key, height: 240, width: 160, crop: :pad %>
-                <div class="platform-tags">
-                  <% serie.platforms.each do |platform| %>
-                      <p class="platform justify-content-center">
-                        <%= platform.to_s %>
-                      </p>
-                  <% end %>
-                </div>
+            <div class="col-3">
+              <%= cl_image_tag serie.photo.key, height: 240, width: 160, crop: :pad %>
+              <div class="platform-tags">
+                <% serie.platforms.each do |platform| %>
+                    <p class="platform justify-content-center">
+                      <%= platform.to_s %>
+                    </p>
+                <% end %>
               </div>
-              <div class="col-7" >
-                <h3><%=link_to serie.title, series_path(serie)%></h3>
-                <div class="genre-tags">
-                  <% serie.genres.each do |genre|%>
-                      <p class="genre">
-                        <%= genre.to_s %>
-                      </p>
-                    <%end%>
-                </div>
+            </div>
+            <div class="col-8" >
+              <h3><%=link_to serie.title, series_path(serie)%></h3>
+              <div class="genre-tags">
+                <% serie.genres.each do |genre|%>
+                  <p class="genre">
+                    <%= genre.to_s %>
+                  </p>
+                <%end%>
+              </div>
 
-                <p class="overflow-auto" style='height: 150px;'>
-                    <%=serie.synopsis%>
-                </p>
-
-                   <div class="mb-2 mb-50 d-flex align-items-center">
+              <p class="overflow-auto" style='height: 150px;'>
+                <%=serie.synopsis%>
+              </p>
+              <div class="mb-2 mb-50 d-flex align-items-center">
                 <div class="release_date-tags">
                   <p class="release_date">
                     <%= serie.release_date.year%>/<%=serie.release_date.month%>
@@ -48,49 +47,34 @@
                     <%= serie.episode_count %> episodes
                   </p>
                 </div>
-                </div>
               </div>
-<<<<<<< HEAD
-              <div class="col-2">
-=======
-              <div class="col-1 justify-content-end" id="like-<%=serie.id%>">
->>>>>>> master
-                <% if Like.find_by(user: current_user, serie: serie)%>
+            </div>
+            <div class="col-1">
+              <div id="like-<%=serie.id%>">
+                <% if Like.find_by(user: current_user, serie: serie) %>
                   <%= link_to(like_path(serie.likes.find_by(user: current_user, serie: serie)), class: "added-wishlist", method: :delete, remote: true) do %>
-                  <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
                   <% end %>
                 <% else %>
                   <%= link_to(series_likes_path(serie), class: "add-wishlist", method: :post, remote: true) do %>
-                  <i class="far fa-heart"></i>
+                    <i class="far fa-heart"></i>
                   <% end %>
                 <%end%>
-<<<<<<< HEAD
-                <div class="viewing mt-50">
-                  <% viewed = serie.viewed?(current_user) %>
-                  <% if viewed %>
-                    <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
-                      <i class="far fa-eye"></i>
-=======
               </div>
               <div class="viewing mt-50 " id="<%= serie.class %>-<%= serie.id %>">
                 <% viewed = serie.viewed?(current_user) %>
                 <% if viewed %>
                   <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
-                    <i class="far fa-check-square"></i>
-                <% end %>
+                    <i class="far fa-eye"></i>
+                  <% end %>
                 <% else %>
                   <%= link_to viewings_path(viewable_id: serie.id, viewable_type: serie.class), class: "add-to-view", method: :post, remote: true do %>
-                    <i class="far fa-square"></i>
->>>>>>> master
+                    <i class="far fa-eye-slash"></i>
                   <% end %>
-                  <% else %>
-                    <%= link_to viewings_path(viewable_id: serie.id, viewable_type: serie.class), class: "add-to-view", method: :post, remote: true do %>
-                      <i class="fas fa-eye-slash"></i>
-                    <% end %>
-                  <% end %>
-                </div>
+                <% end %>
               </div>
             </div>
+          </div>
         </div>
       <%end%>
     </div>
