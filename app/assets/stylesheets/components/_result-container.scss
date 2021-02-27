@@ -35,6 +35,8 @@
 
 .result-container img {
   border-radius: 5px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .card-body {
@@ -61,6 +63,13 @@
   border-radius: 10px;
 }
 
+.platform-tags {
+  text-align: center;
+}
+
+.platform-tags-wishlist {
+  text-align: left;
+}
 .platform {
   border-radius: 5px;
   display: inline-block;
@@ -75,6 +84,7 @@
   vertical-align: middle;
   background-color: grey;
   border-radius: 10px;
+  margin-top: 10px;
 }
 
 .season_title {
@@ -123,6 +133,18 @@
 }
 
 .added-wishlist {
+  font-size: 2rem;
+  color: red !important;
+}
+
+.add-to-view {
+  font-size: 2rem;
+  color: red !important;
+  opacity: 0.3;
+
+}
+
+.added-to-view {
   font-size: 2rem;
   color: red !important;
 }
