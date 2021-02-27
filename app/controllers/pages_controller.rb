@@ -28,6 +28,6 @@ class PagesController < ApplicationController
   end
 
   def library
-    @viewings = current_user.viewings
+    @viewings = current_user.viewings.order(created_at: :desc)
   end
 end
