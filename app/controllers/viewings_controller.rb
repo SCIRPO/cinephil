@@ -11,11 +11,17 @@ class ViewingsController < ApplicationController
     @viewable = params[:viewable_type].constantize.find(params[:viewable_id])
     @viewing = Viewing.create(user: current_user, viewable: @viewable)
     @viewing.save
-    if @viewing.viewable_type == "Serie"
-      redirect_to series_path(@viewable)
-    else
-      redirect_to series_path(@viewable.serie)
+
+    respond_to do |format|
+      if @viewing.viewable_type == "Serie"
+        format.html { redirect_to whishlist_path }
+        format.js
+      else
+        format.html { redirect_to series_path(@viewable.serie) }
+        format.js
+      end
     end
+    
   end
 
   def update
@@ -30,10 +36,15 @@ class ViewingsController < ApplicationController
     @viewing = Viewing.find(params[:id])
     @viewable = @viewing.viewable
     @viewing.destroy
-    if @viewing.viewable_type == "Serie"
-      redirect_to series_path(@viewable)
-    else
-      redirect_to series_path(@viewable.serie)
+
+    respond_to do |format|
+      if @viewing.viewable_type == "Serie"
+        format.html { redirect_to series_path(@viewable) }
+        format.js
+      else
+        format.html { redirect_to series_path(@viewable.serie) }
+        format.js
+      end
     end
   end
 end

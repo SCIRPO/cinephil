@@ -12,6 +12,7 @@
       <div class="mb-3 d-flex align-items-center">
         <h3><%= @serie.title %></h3>
 
+<<<<<<< HEAD
         <div class="viewing mt-50">
           <% viewed = @serie.viewed?(current_user) %>
           <% if viewed %>
@@ -36,6 +37,50 @@
             <% end %>
           <%end%>
        </div>
+=======
+      <div class="viewing mt-50" id="<%= @serie.class %>-<%= @serie.id %>">
+        <% viewed = @serie.viewed?(current_user) %>
+        <% if viewed %>
+          <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
+            <i class="far fa-check-square"></i>
+        <% end %>
+        <% else %>
+          <%= link_to viewings_path(viewable_id: @serie.id, viewable_type: @serie.class), class: "add-to-view", method: :post, remote: true do %>
+            <i class="far fa-square"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="like-<%= @serie.id %>">
+        <% if Like.find_by(user: current_user, serie: @serie)%>
+          <%= link_to(like_path(@serie.likes.find_by(user: current_user, serie: @serie)), class: "added-wishlist", method: :delete, remote: true) do %>
+            <i class="fas fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to(series_likes_path(@serie), class: "add-wishlist", method: :post, remote: true) do %>
+            <i class="far fa-heart"></i>
+          <% end %>
+        <%end%>
+     </div>
+  </div>
+
+    <div class="mb-2 mb-50 d-flex align-items-center">
+      <div class="release_date-tags">
+        <p class="release_date">
+          <%= @serie.release_date.year%>/<%= @serie.release_date.month %>
+        </p>
+      </div>
+      <div class="release_date-tags">
+        <p class="release_date">
+          <%= @serie.seasons.last.season_number %> seasons
+        </p>
+      </div>
+      <div class="release_date-tags">
+        <p class="release_date">
+          <%= @serie.episode_count %> episodes
+        </p>
+      </div>
+>>>>>>> master
     </div>
 
       <div class="mb-2 mb-50 d-flex align-items-center">
@@ -92,6 +137,7 @@
         </div>
       </div>
 
+<<<<<<< HEAD
       <div class="mb-2 mb-50 d-flex align-items-center">
         <div class="title-tags">
           <div class="title">
@@ -99,11 +145,34 @@
           </div>
         </div>
       </div>
+=======
+    <div class="w-75 mb-2 mt-50 d-flex align-items-center">
+      <div class="result">
+        <% @serie.seasons.each do |season| %>
+          <br>
+          <div class="season_title-tags">
+            <div class="season_title">
+            <div class="viewing mt-50" id="<%= season.class %>-<%= season.id %>">
+              <% viewed = season.viewed?(current_user) %>
+              <% if viewed %>
+                  <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
+                    <i class="far fa-check-square"></i>
+                  <% end  %>
+              <% else %>
+                  <%= link_to viewings_path(viewable_id: season.id, viewable_type: season.class), class: "add-to-view", method: :post, remote: true do %>
+                    <i class="far fa-square"></i>
+                  <% end %>
+              <% end %>
+            </div>
+              <%= season.title %>
+            </div>
+>>>>>>> master
 
       <div class="w-75 mb-2 mt-50 d-flex align-items-center">
         <p><%= @serie.synopsis %></p>
       </div>
 
+<<<<<<< HEAD
       <div class="w-75 mb-2 mt-50">
         <div class="result">
           <% @serie.seasons.each do |season| %>
@@ -153,6 +222,29 @@
                           </div>
                         <div class="title">
                           <p>Episode <%= episode.episode_number %>: <%= episode.title %></p>
+=======
+            <div class="accordion" id="accordion">
+              <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapse-<%= season.id %>" >
+                All episodes here
+              </button>
+
+              <% season.episodes.each do |episode|%>
+
+                <div id="collapse-<%= season.id %>" class="collapse" data-parent="#accordion">
+                  <div class="card-body">
+                    <div class="title-tags">
+                        <div class="viewing mt-50" id="<%= episode.class %>-<%= episode.id %>">
+                          <% viewed = episode.viewed?(current_user) %>
+                          <% if viewed %>
+                              <%= link_to viewing_path(viewed), class: "added-to-view", method: :delete, remote: true do %>
+                                <i class="far fa-check-square"></i>
+                              <% end  %>
+                          <% else %>
+                              <%= link_to viewings_path(viewable_id: episode.id, viewable_type: episode.class), class: "add-to-view", method: :post, remote: true do %>
+                                <i class="far fa-square"></i>
+                              <% end %>
+                          <% end %>
+>>>>>>> master
                         </div>
                       </div>
                       <p><%= episode.synopsis%></p>
