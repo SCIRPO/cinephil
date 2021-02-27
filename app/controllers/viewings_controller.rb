@@ -29,7 +29,6 @@ class ViewingsController < ApplicationController
     @viewing.rating = params[:viewing][:rating]
     @viewing.user = current_user
     @viewing.save
-    redirect_to library_path(anchor: "edit_viewing_#{@viewing.id}")
   end
 
   def destroy
