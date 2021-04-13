@@ -7,8 +7,4 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:id])
   end
 
-  # def viewed
-  #   @episode = Episode.find(params[:id])
-  # end
-
 end

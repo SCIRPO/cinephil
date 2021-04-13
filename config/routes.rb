@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  require "sidekiq/web"
   get 'viewings/create'
   devise_for :users
   root to: 'pages#home'
@@ -19,5 +20,8 @@ Rails.application.routes.draw do
   post '/viewed', to: 'series#viewed'
   #resources :viewings, only: [:create, :destroy]
   resources :viewings
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
 end
