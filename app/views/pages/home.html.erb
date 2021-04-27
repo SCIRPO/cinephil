@@ -2,7 +2,7 @@
 <!-- video banner  -->
 <div class="banner-hero">
   <div class="banner-content">
-    <h1>Never forget a series. Ever again.</h1>
+   <h1>Never forget a series. Ever again.</h1>
     <!-- search bar -->
     <%= form_tag series_index_path, method: :get do %>
       <%= text_field_tag :name_query,
@@ -16,81 +16,72 @@
 </div>
 
 <div class="container">
-<!-- statistics -->
-
   <!-- titre stats -->
-<div class="statistics">
+  <div class="statistics">
     <h2>
       Statistics
     </h2>
-
-  <!-- stats -->
-   <div class="row stats">
-    <div class="col-3">
+    <div class="row stats">
+      <div class="col-3">
        <p class="statistics-number" id="series" data-count="1327">1,327</p>
        <p class="statistics-label" >Available series</p>
-    </div>
-    <div class="col-3">
+      </div>
+      <div class="col-3">
        <p class="statistics-number" id="users" data-count="2735142">2,735,142</p>
        <p class="statistics-label">CinePhil lovers</p>
-    </div>
-    <div class="col-3">
+      </div>
+      <div class="col-3">
        <p class="statistics-number" id="episodes" data-count="456845886">4,568,458,862</p>
        <p class="statistics-label">Watched episodes</p>
-   </div>
-    <div class="col-3">
+      </div>
+      <div class="col-3">
        <p class="statistics-number" id="hours" data-count="228469587">2,284,695,874</p>
        <p class="statistics-label">Hours of watching</p>
-     </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="platform-goals">
-  <h2>
-    Keep track of all your stories.
-  </h2>
-  <div class="row justify-content-between my-5">
-    <div class="col-5">
-      <h5>
-        Find all your series on one platform
-      </h5>
-      <p>
+  <div class="platform-goals">
+    <h2>
+      Keep track of all your stories.
+    </h2>
+    <div class="row justify-content-between my-5">
+      <div class="col-5">
+        <h5>
+          Find all your series on one platform
+        </h5>
+        <p>
           With more than 1 300 series, you're always sure to find the series that best suit you
-      </p>
-    </div>
-    <div class="col-5">
-      <h5>
-        Create your personal library
-      </h5>
-      <p>
+        </p>
+      </div>
+      <div class="col-5">
+        <h5>
+          Create your personal library
+        </h5>
+        <p>
           Add the series you already watched, to watch them again when you want
-      </p>
+        </p>
+      </div>
     </div>
-  </div>
-
-  <div class="row justify-content-between my-5">
-    <div class="col-5">
-      <h5>
-        Score your series
-      </h5>
-      <p>
-          Find back the series you liked the most and avoid watching again the worst
-      </p>
+    <div class="row justify-content-between my-5">
+      <div class="col-5">
+        <h5>
+          Score your series
+        </h5>
+        <p>
+            Find back the series you liked the most and avoid watching again the worst
+        </p>
+      </div>
+      <div class="col-5">
+        <h5>
+          Remember the last episode you’ve seen
+        </h5>
+        <p>
+            Never waste your time wondering where you stand on a season
+        </p>
+      </div>
     </div>
-    <div class="col-5">
-      <h5>
-        Remember the last episode you’ve seen
-      </h5>
-      <p>
-          Never waste your time wondering where you stand on a season
-      </p>
+    <div class="row final-cta col-3">
+      <%= link_to "Browse all series", series_index_path, class: "btn-main" %>
     </div>
-  </div>
-
-  <div class="row final-cta col-3">
-    <%= link_to "Browse all series", series_index_path, class: "btn-main" %>
-  </div>
-</div>
-
-
 </div>

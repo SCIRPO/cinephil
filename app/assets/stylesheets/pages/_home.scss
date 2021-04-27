@@ -51,11 +51,12 @@ p {
 .banner-hero {
   height: 500px;
   background-image: url("https://res.cloudinary.com/dmwz69h6j/image/upload/v1612294050/jens-kreuter-ngMtsE5r9eI-unsplash_z4j7he.jpg");
-  background-size: cover;
+  background-size:cover;
   width: auto;
   filter: grayscale(40%);
   margin-bottom: 25px;
 }
+
 
 .banner-content {
   display: block;
@@ -80,6 +81,25 @@ p {
 
 }
 
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+//.responsive {
+  //width: 100%;
+  //height: auto;
+//}
 
 .statistics {
   margin-top: 20px;
