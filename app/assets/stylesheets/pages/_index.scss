@@ -1,8 +1,7 @@
 // Import page-specific CSS files here.
 @import "library";
 .main {
-  min-height: 200px;
-  max-height: 800px;
+  min-height: calc(100vh - 60px);
 }
 
 .page-title {

@@ -6,6 +6,7 @@
   opacity: 1;
   transition: opacity 0.3s ease;
   color: $text-color !important;
+  font-size: clamp(10px, 2vw, 15px);
 }
 
 .btn-secondary {
@@ -16,12 +17,14 @@
   opacity: 0.6;
   transition: opacity 0.3s ease;
   color: $text-color !important;
+  font-size: clamp(10px, 2vw, 15px);
 }
 
 .btn-collapse {
   opacity: 0.6;
   transition: opacity 0.3s;
   color: $text-color !important;
+  font-size: 1vw;
 }
 
 .banner-content .btn-main {

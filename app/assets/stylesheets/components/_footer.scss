@@ -6,13 +6,15 @@
   height: 200px;
   padding: 0px 50px;
   color: $text-color;
-}
+  font-size: clamp(8px, 2vw, 15px);
+  }
+
 .footer-links {
   display: flex;
   align-items: center;
   color: $text-color;
-
 }
+
 .footer-links a {
   color: $text-color;
   opacity: 1;
@@ -20,9 +22,11 @@
   font-size: 35px;
   padding: 0px 10px;
 }
+
 .footer-links a:hover {
   opacity: 0.15;
 }
+
 .footer .fa-heart {
   color: #D23333;
 }
